@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>S3 Portal Landing</title>
+  <meta name="description" content="S3 Portal is a self-hosted S3 file manager for teams." />
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || savedTheme === 'light') {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+      } catch (e) {
+        // Ignore storage access issues.
+      }
+    })();
+  </script>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="container inner">
+      <a class="brand" href="landing.html">
+        <img class="brand-logo" src="assets/logo.svg" alt="S3 Portal logo" />
+        <span>S3 Portal</span>
+      </a>
+      <div class="nav-links">
+        <a class="active" href="landing.html">Home</a>
+        <a href="documentation/self-hosting.html">Documentation</a>
+        <a href="https://github.com/mayurG2299/s3-portal" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn btn-primary" href="#setup">Get started</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero hero-marketing">
+      <p class="hero-kicker">Open source self-hosted S3 portal</p>
+      <h1>Manage files in S3 with a flow your team can actually use.</h1>
+      <p class="lead">Connect your S3 credentials, upload and share files, and manage team access from one clean UI.</p>
+
+      <section class="product-story" aria-labelledby="what-s3-portal-does">
+        <div class="product-copy">
+          <p class="section-kicker">Zero fluff</p>
+          <h2 id="what-s3-portal-does">What S3 Portal does</h2>
+          <p class="product-lead">S3 Portal is a production-grade, self-hosted file management portal for teams. You bring your own AWS credentials, and the portal handles uploads, sharing, access control, and audit trails.</p>
+          <p class="product-lead">Files go directly from the browser to S3; nothing ever touches your server. That gives teams full control over storage while keeping the day-to-day workflow usable.</p>
+        </div>
+
+        <div class="product-grid" aria-label="Core product capabilities">
+          <article class="product-card">
+            <h3>Direct S3 Integration</h3>
+            <p>Connect any S3-compatible provider and keep your data on infrastructure you already control.</p>
+          </article>
+          <article class="product-card">
+            <h3>Zero-Trust Security</h3>
+            <p>Role-based access with audit logs, encrypted credentials, and no plaintext storage of secrets.</p>
+          </article>
+          <article class="product-card">
+            <h3>Parallel Uploads</h3>
+            <p>Blazing fast multipart transfers for large files without routing uploads through your app server.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="setup" class="setup-shell">
+        <p class="setup-kicker">Quick setup</p>
+        <h2>Self-hosting steps</h2>
+
+        <div class="setup-grid">
+          <article class="setup-card">
+            <div class="setup-card-header">
+              <span class="setup-step">1</span>
+              <div>
+                <h3>Download</h3>
+                <p>Fetch the compose file.</p>
+              </div>
+            </div>
+            <div class="code-header">
+              <p class="code-title">Command</p>
+              <button class="copy-btn" data-copy-target="setup-download">Copy</button>
+            </div>
+            <pre id="setup-download"><code>curl -LO https://github.com/mayurG2299/s3-portal/raw/main/docker-compose.yml</code></pre>
+          </article>
+
+          <article class="setup-card">
+            <div class="setup-card-header">
+              <span class="setup-step">2</span>
+              <div>
+                <h3>Configure</h3>
+                <p>Prepare .env and set required variables.</p>
+              </div>
+            </div>
+            <div class="code-header">
+              <p class="code-title">Command</p>
+              <button class="copy-btn" data-copy-target="setup-configure">Copy</button>
+            </div>
+            <pre id="setup-configure"><code>cp .env.example .env
+nano .env</code></pre>
+          </article>
+
+          <article class="setup-card">
+            <div class="setup-card-header">
+              <span class="setup-step">3</span>
+              <div>
+                <h3>Start</h3>
+                <p>Start all services with Docker Compose.</p>
+              </div>
+            </div>
+            <div class="code-header">
+              <p class="code-title">Command</p>
+              <button class="copy-btn" data-copy-target="setup-start">Copy</button>
+            </div>
+            <pre id="setup-start"><code>docker compose up -d</code></pre>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container inner">
+      <p>S3 Portal - Open source file management</p>
+      <div class="footer-links">
+        <a href="https://github.com/mayurG2299/s3-portal" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://mayur.ghaadi.in" target="_blank" rel="noreferrer">About me</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="theme-fab" type="button" data-theme-fab aria-label="Toggle theme" title="Toggle theme">
+    <span class="theme-fab-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="M4.93 4.93l1.41 1.41"></path>
+        <path d="M17.66 17.66l1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="M4.93 19.07l1.41-1.41"></path>
+        <path d="M17.66 6.34l1.41-1.41"></path>
+      </svg>
+    </span>
+    <span class="theme-fab-tooltip" role="tooltip">Toggle theme</span>
+  </button>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var fabToggle = document.querySelector('[data-theme-fab]');
+      var fabTooltip = document.querySelector('.theme-fab-tooltip');
+      if (!fabToggle) return;
+
+      function setTheme(theme, persist) {
+        root.setAttribute('data-theme', theme);
+        var label = 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode';
+        fabToggle.setAttribute('aria-label', label);
+        fabToggle.setAttribute('title', label);
+        if (fabTooltip) {
+          fabTooltip.textContent = label;
+        }
+        if (persist) {
+          try {
+            localStorage.setItem('theme', theme);
+          } catch (e) {
+            // Ignore storage access issues.
+          }
+        }
+      }
+
+      var currentTheme = root.getAttribute('data-theme');
+      if (currentTheme !== 'dark' && currentTheme !== 'light') {
+        currentTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+
+      setTheme(currentTheme, false);
+      fabToggle.addEventListener('click', function () {
+        var activeTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(activeTheme, true);
+      });
+    })();
+
+    document.querySelectorAll('.copy-btn').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var targetId = button.getAttribute('data-copy-target');
+        var target = document.getElementById(targetId);
+        if (!target) return;
+        navigator.clipboard.writeText(target.innerText).then(function () {
+          var original = button.textContent;
+          button.textContent = 'Copied';
+          setTimeout(function () { button.textContent = original; }, 1400);
+        });
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (event) {
+        var id = anchor.getAttribute('href');
+        if (!id || id.length < 2) return;
+        var element = document.querySelector(id);
+        if (!element) return;
+        event.preventDefault();
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', id);
+      });
+    });
+  </script>
+</body>
+</html>

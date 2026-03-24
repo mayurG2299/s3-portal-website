@@ -17,21 +17,20 @@
       }
     })();
   </script>
-  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
   <nav class="site-nav">
     <div class="container inner">
-      <a class="brand" href="/">
-        <img class="brand-logo" src="/assets/logo.svg" alt="S3 Portal logo" />
+      <a class="brand" href="../landing.html">
+        <img class="brand-logo" src="../assets/logo.svg" alt="S3 Portal logo" />
         <span>S3 Portal</span>
       </a>
       <div class="nav-links">
-        <a href="/">Home</a>
-        <a class="active" href="/documentation">Documentation</a>
+        <a href="../landing.html">Home</a>
+        <a class="active" href="self-hosting.html">Documentation</a>
         <a href="https://github.com/mayurG2299/s3-portal" target="_blank" rel="noreferrer">GitHub</a>
-        <button class="theme-toggle" type="button" data-theme-toggle>Light mode</button>
       </div>
     </div>
   </nav>
@@ -39,8 +38,8 @@
   <main class="container layout-doc">
     <aside class="sidebar sidebar-main">
       <h4>Main modules</h4>
-      <a href="/documentation/self-hosting">Self Hosting</a>
-      <a class="active" href="/documentation/aws-setup">AWS S3 Setup</a>
+      <a href="self-hosting.html">Self Hosting</a>
+      <a class="active" href="aws-setup.html">AWS S3 Setup</a>
     </aside>
 
     <article class="doc-main">
@@ -154,16 +153,38 @@
     </div>
   </footer>
 
+  <button class="theme-fab" type="button" data-theme-fab aria-label="Toggle theme" title="Toggle theme">
+    <span class="theme-fab-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="M4.93 4.93l1.41 1.41"></path>
+        <path d="M17.66 17.66l1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="M4.93 19.07l1.41-1.41"></path>
+        <path d="M17.66 6.34l1.41-1.41"></path>
+      </svg>
+    </span>
+    <span class="theme-fab-tooltip" role="tooltip">Toggle theme</span>
+  </button>
+
   <script>
     (function () {
       var root = document.documentElement;
-      var toggle = document.querySelector('[data-theme-toggle]');
+      var toggle = document.querySelector('[data-theme-fab]');
+      var tooltip = document.querySelector('.theme-fab-tooltip');
       if (!toggle) return;
 
       function setTheme(theme, persist) {
         root.setAttribute('data-theme', theme);
-        toggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
-        toggle.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+        var label = 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode';
+        toggle.setAttribute('aria-label', label);
+        toggle.setAttribute('title', label);
+        if (tooltip) {
+          tooltip.textContent = label;
+        }
         if (persist) {
           try {
             localStorage.setItem('theme', theme);
@@ -185,5 +206,6 @@
       });
     })();
   </script>
+
 </body>
 </html>
