@@ -1,7 +1,18 @@
-# S3 Portal Website
+# S3 Portal Static Website
 
-This repository contains the static landing page and documentation for S3 Portal, ready for deployment on Cloudflare Pages or any static host.
+This folder contains the public static documentation website for S3 Portal.
 
-- All files are static (HTML, CSS, images)
-- No app code or sensitive data
-- Safe for public hosting
+## Deploy to Cloudflare Pages
+
+- Project root directory: `website/`
+- Build command: none
+- Output directory: `website/`
+
+## Included Pages
+
+- `/` -> landing page
+- `/documentation` -> documentation home
+- `/documentation/aws-setup` -> AWS setup guide
+- `/documentation/self-hosting` -> self-hosting guide
+
+Routing for extensionless documentation URLs is handled by `website/_redirects`.
