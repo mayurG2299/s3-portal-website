@@ -254,6 +254,60 @@ h1 {
   gap: 0.75rem;
 }
 
+.product-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.section-kicker {
+  margin: 0;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.product-copy h2 {
+  margin: 0.45rem 0 0;
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+}
+
+.product-lead {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 62ch;
+}
+
+.product-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.product-card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--bg-elev) 88%, transparent);
+  padding: 1rem 1.05rem;
+  box-shadow: var(--shadow);
+}
+
+.product-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.product-card p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
 .setup-shell {
   margin-top: 4rem;
   border: 1px solid var(--border);
@@ -769,6 +823,7 @@ tbody tr:last-child td {
     gap: 0.65rem;
   }
 
+  .product-story,
   .setup-grid {
     grid-template-columns: 1fr;
   }
