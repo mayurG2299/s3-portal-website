@@ -76,14 +76,15 @@
               <span class="setup-step">1</span>
               <div>
                 <h3>Download</h3>
-                <p>Fetch the compose file.</p>
+                <p>Fetch compose and environment template files.</p>
               </div>
             </div>
             <div class="code-header">
               <p class="code-title">Command</p>
               <button class="copy-btn" data-copy-target="setup-download">Copy</button>
             </div>
-            <pre id="setup-download"><code>curl -LO https://github.com/mayurG2299/s3-portal/raw/main/docker-compose.yml</code></pre>
+            <pre id="setup-download"><code>curl -LO https://github.com/mayurG2299/s3-portal/raw/main/docker-compose.yml
+curl -LO https://github.com/mayurG2299/s3-portal/raw/main/.env.example</code></pre>
           </article>
 
           <article class="setup-card">
@@ -91,7 +92,7 @@
               <span class="setup-step">2</span>
               <div>
                 <h3>Configure</h3>
-                <p>Prepare .env and set required variables.</p>
+                <p>Create .env and fill required values (DB URL and secrets).</p>
               </div>
             </div>
             <div class="code-header">
@@ -99,6 +100,8 @@
               <button class="copy-btn" data-copy-target="setup-configure">Copy</button>
             </div>
             <pre id="setup-configure"><code>cp .env.example .env
+export NEXTAUTH_SECRET=$(openssl rand -base64 32)
+export ENCRYPTION_KEY=$(openssl rand -base64 32 | cut -c1-32)
 nano .env</code></pre>
           </article>
 
