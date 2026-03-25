@@ -83,7 +83,7 @@
               <p class="code-title">Command</p>
               <button class="copy-btn" data-copy-target="setup-download">Copy</button>
             </div>
-            <pre id="setup-download"><code>curl -LO https://github.com/mayurG2299/s3-portal/raw/master/docker-compose.yml
+            <pre id="setup-download"><code>curl -LO https://github.com/mayurG2299/s3-portal/raw/master/docker-compose.production.yml
 curl -LO https://github.com/mayurG2299/s3-portal/raw/master/.env.example</code></pre>
           </article>
 
@@ -117,7 +117,7 @@ nano .env</code></pre>
               <p class="code-title">Command</p>
               <button class="copy-btn" data-copy-target="setup-start">Copy</button>
             </div>
-            <pre id="setup-start"><code>docker compose up -d</code></pre>
+            <pre id="setup-start"><code>docker compose -f docker-compose.production.yml up -d</code></pre>
           </article>
         </div>
       </section>

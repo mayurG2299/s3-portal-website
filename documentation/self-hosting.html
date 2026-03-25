@@ -75,7 +75,8 @@
             <p class="code-title">Download compose file</p>
             <button class="copy-btn" data-copy-target="download">Copy</button>
           </div>
-          <pre id="download"><code>curl -LO https://github.com/mayurG2299/s3-portal/raw/master/docker-compose.yml</code></pre>
+          <pre id="download"><code>curl -LO https://github.com/mayurG2299/s3-portal/raw/master/docker-compose.production.yml
+curl -LO https://github.com/mayurG2299/s3-portal/raw/master/.env.example</code></pre>
         </section>
       </section>
 
@@ -100,6 +101,7 @@ nano .env</code></pre>
               <tr><td><code>ENCRYPTION_KEY</code></td><td>required</td><td><code>openssl rand -base64 32</code></td></tr>
               <tr><td><code>NEXTAUTH_URL</code></td><td>required</td><td>e.g. <code>http://localhost:3000</code></td></tr>
               <tr><td><code>NEXT_PUBLIC_APP_URL</code></td><td>required</td><td>Same as <code>NEXTAUTH_URL</code></td></tr>
+              <tr><td><code>DOCKER_USER</code></td><td>required</td><td>Docker Hub org/user, e.g. <code>may99</code></td></tr>
               <tr><td><code>PORT</code></td><td>optional</td><td>Default: 3000</td></tr>
               <tr><td><code>LOG_LEVEL</code></td><td>optional</td><td>Default: INFO</td></tr>
             </tbody>
@@ -114,7 +116,7 @@ nano .env</code></pre>
             <p class="code-title">Start services</p>
             <button class="copy-btn" data-copy-target="start">Copy</button>
           </div>
-          <pre id="start"><code>docker compose up -d</code></pre>
+          <pre id="start"><code>docker compose -f docker-compose.production.yml up -d</code></pre>
         </section>
       </section>
 
@@ -125,7 +127,7 @@ nano .env</code></pre>
             <p class="code-title">Run migrations</p>
             <button class="copy-btn" data-copy-target="migrate">Copy</button>
           </div>
-          <pre id="migrate"><code>docker compose run --rm app npx prisma migrate deploy</code></pre>
+          <pre id="migrate"><code>docker compose -f docker-compose.production.yml run --rm app npx prisma db seed</code></pre>
         </section>
       </section>
 
@@ -146,13 +148,13 @@ nano .env</code></pre>
             <button class="copy-btn" data-copy-target="useful">Copy</button>
           </div>
           <pre id="useful"><code># View logs
-docker compose logs -f
+docker compose -f docker-compose.production.yml logs -f
 
 # Stop
-docker compose down
+docker compose -f docker-compose.production.yml down
 
 # Update to latest
-docker compose pull && docker compose up -d</code></pre>
+docker compose -f docker-compose.production.yml pull && docker compose -f docker-compose.production.yml up -d</code></pre>
         </section>
       </section>
 
@@ -163,8 +165,8 @@ docker compose pull && docker compose up -d</code></pre>
             <p class="code-title">Update</p>
             <button class="copy-btn" data-copy-target="updating-code">Copy</button>
           </div>
-          <pre id="updating-code"><code>docker compose pull
-docker compose up -d</code></pre>
+          <pre id="updating-code"><code>docker compose -f docker-compose.production.yml pull
+docker compose -f docker-compose.production.yml up -d</code></pre>
         </section>
       </section>
     </article>
