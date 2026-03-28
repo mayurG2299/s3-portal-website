@@ -91,23 +91,54 @@ curl -LO https://github.com/mayurG2299/s3-portal/raw/master/.env.example</code><
             <div class="setup-card-header">
               <span class="setup-step">2</span>
               <div>
-                <h3>Configure</h3>
-                <p>Create .env and fill required values (DB URL and secrets).</p>
+                <h3>Create .env</h3>
+                <p>Copy the template so values can be edited safely.</p>
               </div>
             </div>
             <div class="code-header">
               <p class="code-title">Command</p>
-              <button class="copy-btn" data-copy-target="setup-configure">Copy</button>
+              <button class="copy-btn" data-copy-target="setup-create-env">Copy</button>
             </div>
-            <pre id="setup-configure"><code>cp .env.example .env
-export NEXTAUTH_SECRET=$(openssl rand -base64 32)
-export ENCRYPTION_KEY=$(openssl rand -base64 32 | cut -c1-32)
-nano .env</code></pre>
+            <pre id="setup-create-env"><code>cp .env.example .env</code></pre>
           </article>
 
           <article class="setup-card">
             <div class="setup-card-header">
               <span class="setup-step">3</span>
+              <div>
+                <h3>Generate keys</h3>
+                <p>Generate and write secrets into the existing .env file.</p>
+              </div>
+            </div>
+            <div class="code-header">
+              <p class="code-title">Command</p>
+              <button class="copy-btn" data-copy-target="setup-generate-keys">Copy</button>
+            </div>
+            <pre id="setup-generate-keys"><code>NEXTAUTH_SECRET=$(openssl rand -base64 32)
+ENCRYPTION_KEY=$(openssl rand -base64 32 | cut -c1-32)
+sed -i.bak "s|^NEXTAUTH_SECRET=.*|NEXTAUTH_SECRET=\"$NEXTAUTH_SECRET\"|" .env
+sed -i.bak "s|^ENCRYPTION_KEY=.*|ENCRYPTION_KEY=\"$ENCRYPTION_KEY\"|" .env
+rm -f .env.bak</code></pre>
+          </article>
+
+          <article class="setup-card">
+            <div class="setup-card-header">
+              <span class="setup-step">4</span>
+              <div>
+                <h3>Configure values</h3>
+                <p>Set DB URL and other required variables in .env.</p>
+              </div>
+            </div>
+            <div class="code-header">
+              <p class="code-title">Command</p>
+              <button class="copy-btn" data-copy-target="setup-configure-values">Copy</button>
+            </div>
+            <pre id="setup-configure-values"><code>nano .env</code></pre>
+          </article>
+
+          <article class="setup-card">
+            <div class="setup-card-header">
+              <span class="setup-step">5</span>
               <div>
                 <h3>Start</h3>
                 <p>Start all services with Docker Compose.</p>

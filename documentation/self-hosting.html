@@ -51,10 +51,12 @@
         <nav>
           <a href="#prerequisites">Prerequisites</a>
           <a href="#step1">Step 1 - Download</a>
-          <a href="#step2">Step 2 - Configure</a>
-          <a href="#step3">Step 3 - Start</a>
-          <a href="#step4">Step 4 - Run migrations</a>
-          <a href="#step5">Step 5 - Connect AWS</a>
+          <a href="#step2">Step 2 - Create .env</a>
+          <a href="#step3">Step 3 - Generate keys</a>
+          <a href="#step4">Step 4 - Configure values</a>
+          <a href="#step5">Step 5 - Start</a>
+          <a href="#step6">Step 6 - Run migrations</a>
+          <a href="#step7">Step 7 - Connect AWS</a>
           <a href="#commands">Useful commands</a>
           <a href="#updating">Updating</a>
         </nav>
@@ -81,14 +83,39 @@ curl -LO https://github.com/mayurG2299/s3-portal/raw/master/.env.example</code><
       </section>
 
       <section id="step2" class="step">
-        <h2>Step 2 - Configure</h2>
+        <h2>Step 2 - Create .env</h2>
         <section class="code-card">
           <div class="code-header">
-            <p class="code-title">Prepare env file</p>
-            <button class="copy-btn" data-copy-target="configure">Copy</button>
+            <p class="code-title">Create env file</p>
+            <button class="copy-btn" data-copy-target="create-env">Copy</button>
           </div>
-          <pre id="configure"><code>cp .env.example .env
-nano .env</code></pre>
+          <pre id="create-env"><code>cp .env.example .env</code></pre>
+        </section>
+      </section>
+
+      <section id="step3" class="step">
+        <h2>Step 3 - Generate keys</h2>
+        <section class="code-card">
+          <div class="code-header">
+            <p class="code-title">Generate and write secrets</p>
+            <button class="copy-btn" data-copy-target="generate-keys">Copy</button>
+          </div>
+          <pre id="generate-keys"><code>NEXTAUTH_SECRET=$(openssl rand -base64 32)
+ENCRYPTION_KEY=$(openssl rand -base64 32 | cut -c1-32)
+sed -i.bak "s|^NEXTAUTH_SECRET=.*|NEXTAUTH_SECRET=\"$NEXTAUTH_SECRET\"|" .env
+sed -i.bak "s|^ENCRYPTION_KEY=.*|ENCRYPTION_KEY=\"$ENCRYPTION_KEY\"|" .env
+rm -f .env.bak</code></pre>
+        </section>
+      </section>
+
+      <section id="step4" class="step">
+        <h2>Step 4 - Configure values</h2>
+        <section class="code-card">
+          <div class="code-header">
+            <p class="code-title">Edit env file</p>
+            <button class="copy-btn" data-copy-target="configure-values">Copy</button>
+          </div>
+          <pre id="configure-values"><code>nano .env</code></pre>
         </section>
         <div class="table-wrap">
           <table>
@@ -109,8 +136,8 @@ nano .env</code></pre>
         </div>
       </section>
 
-      <section id="step3" class="step">
-        <h2>Step 3 - Start</h2>
+      <section id="step5" class="step">
+        <h2>Step 5 - Start</h2>
         <section class="code-card">
           <div class="code-header">
             <p class="code-title">Start services</p>
@@ -120,8 +147,8 @@ nano .env</code></pre>
         </section>
       </section>
 
-      <section id="step4" class="step">
-        <h2>Step 4 - Run migrations (first time only)</h2>
+      <section id="step6" class="step">
+        <h2>Step 6 - Run migrations (first time only)</h2>
         <section class="code-card">
           <div class="code-header">
             <p class="code-title">Run migrations</p>
@@ -131,8 +158,8 @@ nano .env</code></pre>
         </section>
       </section>
 
-      <section id="step5" class="step">
-        <h2>Step 5 - Connect AWS</h2>
+      <section id="step7" class="step">
+        <h2>Step 7 - Connect AWS</h2>
         <ul>
           <li>Visit <code>http://localhost:3000</code>.</li>
           <li>Follow the onboarding wizard.</li>
@@ -175,10 +202,12 @@ docker compose -f docker-compose.production.yml up -d</code></pre>
       <h4>Sub modules</h4>
       <a href="#prerequisites">Prerequisites</a>
       <a href="#step1">Step 1 - Download</a>
-      <a href="#step2">Step 2 - Configure</a>
-      <a href="#step3">Step 3 - Start</a>
-      <a href="#step4">Step 4 - Run migrations</a>
-      <a href="#step5">Step 5 - Connect AWS</a>
+      <a href="#step2">Step 2 - Create .env</a>
+      <a href="#step3">Step 3 - Generate keys</a>
+      <a href="#step4">Step 4 - Configure values</a>
+      <a href="#step5">Step 5 - Start</a>
+      <a href="#step6">Step 6 - Run migrations</a>
+      <a href="#step7">Step 7 - Connect AWS</a>
       <a href="#commands">Useful commands</a>
       <a href="#updating">Updating</a>
     </aside>
